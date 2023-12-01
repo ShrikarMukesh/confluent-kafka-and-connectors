@@ -1,0 +1,32 @@
+{
+  "name": "money-transfer-data-jdbc-source-connector-v1",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+    "tasks.max": "1",
+    "key.converter": "io.confluent.connect.avro.AvroConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "key.converter.schema.registry.url": "http://localhost:8081",
+    "value.converter.schema.registry.url": "http://localhost:8081",
+    "transforms": "createKey,setSchema",
+    "transforms.createKey.type": "org.apache.kafka.connect.transforms.ValueToKey",
+    "transforms.createKey.fields": "TXN_ID,TXN_DATE",
+    "transforms.setSchema.type": "org.apache.kafka.connect.transforms.SetSchemaMetadata$Value",
+    "transforms.setSchema.schema.name": "MoneyTransferRecords",
+    "connection.url": "jdbc:mysql://localhost:3306/practice",
+    "connection.user": "shrikar",
+    "connection.password": "Mukesh@123",
+    "dialect.name": "MySqlDatabaseDialect",
+    "mode": "timestamp+incrementing",
+    "timestamp.column.name": "TXN_DATE",
+    "incrementing.column.name": "TXN_ID",
+    "numeric.precision.mapping": true,
+    "numeric.mapping": "best_fit",
+    "query": "SELECT * FROM money_transfer_data",
+    "table.type": "TABLE",
+    "poll.interval.ms": "10000",
+    "batch.max.rows": "100",
+    "topic.prefix": "money-transfer-data-v1",
+    "db.timezone": "Asia/Kolkata"
+  }
+}
+

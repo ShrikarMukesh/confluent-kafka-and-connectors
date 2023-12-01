@@ -1,0 +1,36 @@
+
+alias cls='printf "\033c"'
+sudo docker exec -it <connect-base container id>
+
+-------------------------------------------------------------------------------------------
+
+Installing Connectors:
+
+https://www.youtube.com/watch?v=qHxm7Eu3C5Y&t=157s
+confluent-hub install confluentinc/kafka-connect-jdbc:10.7.4
+confluent-hub install mongodb/kafka-connect-mongodb:1.11.0
+-------------------------------------------------
+After adding new connector we need to restart 
+sudo docker-compose restart
+
+WARNING: The PWD variable is not set. Defaulting to a blank string.
+Stopping ksqldb-cli      ... done
+Stopping ksql-datagen    ... done
+Stopping control-center  ... done
+Stopping ksqldb-server   ... done
+Stopping kafka-connect   ... done
+Stopping schema-registry ... done
+Stopping broker          ... done
+Stopping zookeeper       ... done
+Removing ksqldb-cli      ... done
+Removing ksql-datagen    ... done
+Removing control-center  ... done
+Removing ksqldb-server   ... done
+Removing kafka-connect   ... done
+Removing rest-proxy      ... done
+Removing schema-registry ... done
+Removing broker          ... done
+Removing zookeeper       ... done
+Removing network confluent-kafka-and-connectors_default
+
+---------------------------------------------------------------------------------------------

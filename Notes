@@ -1,0 +1,48 @@
+
+docker rm $(docker ps -q -f status=exited)
+sudo docker-compose.yml up --detach
+
+sudo lsof -i :8082
+
+-->
+create table money-transfer-data (
+
+   SENDER_NAME
+   RECEIVER_NAME
+   SENDER_ACCT
+   RECEIVER_ACCT
+   AMOUNT
+   SENDER_BANK
+   RECEIVER_BANK
+   TXN_ID
+   TXN_DATE
+   
+   )
+   
+-------------------------------------------------
+sudo systemctl status confluent-kafka
+sudo systemctl start confluent-kafka
+sudo systemctl stop confluent-kafka
+
+sudo systemctl status confluent-zookeeper
+sudo systemctl start confluent-zookeeper
+sudo systemctl stop confluent-zookeeper
+
+sudo systemctl status confluent-control-center
+sudo systemctl start confluent-control-center
+sudo systemctl stop confluent-control-center
+
+-----------------------------------------------------------------------------------------------------------------
+
+kafka-topics --create --topic my_topic --partitions 1 --replication-factor 1 --bootstrap-server localhost:9092
+
+kafka-topics --list --bootstrap-server localhost:9092
+
+kafka-console-producer --topic my_topic --bootstrap-server localhost:9092
+
+kafka-console-consumer --topic my_topic --from-beginning --bootstrap-server localhost:9092
+
+kafka-consumer-groups --list --bootstrap-server localhost:9092
+
+	
+
